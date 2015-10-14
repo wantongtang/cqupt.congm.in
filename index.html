@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="一站解决外网访问教务在线等内网所有网页！" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+	<title>｡◕‿◕｡ -> 内网外入</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;
+			font-size:16px;
+		}
+		a{
+			color: #fff;
+			text-decoration: none;
+		}
+		ul,li{
+			list-style: none;
+		}
+		input[value]{
+			font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;
+			font-size: 18px;
+			text-align: center;
+			color: rgba(255,255,255,0.95);
+		}
+		#wallpaper{
+			position: absolute;
+			width:100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.black_overlay{
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index: 1;
+			-moz-opacity: .5;
+			opacity: .5;
+			filter: alpha(opacity=50);
+		}
+		.white_content{
+			position: absolute;
+			z-index: 2;
+			text-align:center;
+			color:#fff;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+		}
+		.main{
+			position: absolute;
+			top: 33%;
+			left: 50%;
+			margin-left: -310px;
+			font-size: 32px;
+			color: rgba(255,255,255,0.9);
+		}
+		.main_input{
+			position: relative;
+			bottom: 3px;
+			width: 420px;
+			height: 20px;
+			padding: 10px 0px;
+			margin: 0 auto;
+			border: none;
+			border: 1px solid #D3D3D3;
+			border-radius: 5px;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			box-shadow: 0 0 5px #D3D3D3;
+			-moz-box-shadow: 0 0 5px #D3D3D3;
+			-webkit-box-shadow: 0 0 5px #D3D3D3;
+			background-color: rgba(255,255,255,0.1); 
+			-webkit-transition: all 0.5s;
+			-o-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		.main_input:hover{
+			box-shadow: 0 0 10px #D3D3D3;
+			-moz-box-shadow: 0 0 10px #D3D3D3;
+			-webkit-box-shadow: 0 0 10px #D3D3D3;
+			border: 1px solid #3BB4F2;
+			background-color: rgba(59,180,242,0.1);
+		}
+		#enter{
+			cursor: pointer;
+			-moz-opacity: 0.5;
+			opacity: .5;
+			filter: alpha(opacity=50);
+			-webkit-transition: all 0.5s;
+			-o-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		#enter img{
+			width: 45px;
+			vertical-align: middle;
+		}
+		#more_p{
+			height: 50px;
+		}
+		#more{
+			display: none;
+			font-weight: 300;
+			font-size: 14px; 
+			line-height: 200%;
+			padding-top: 10px;
+			padding-left: 20px;
+			-moz-opacity: 0.75;
+			opacity: .75;
+			filter: alpha(opacity=75);
+		}
+		#tagsList{
+			visibility: hidden;
+			font-size: 16px;
+			position:relative;
+			width:400px;
+			height:300px;
+			top: 33%;
+			margin: 90px auto 0;
+			-moz-opacity: 0.9;
+			opacity: .9;
+			filter: alpha(opacity=90);
+		}
+		#tagsList a{
+			position:absolute;
+			top:0px;
+			left:0px;
+			color:#fff;
+			font-weight:bold;
+			text-decoration:none;
+			padding: 3px 6px;
+		}
+		#tagsList a:hover{
+			border: 1px solid #fff;
+			border-radius: 2px;
+			padding: 2px 5px;
+			background: rgba(0,0,0,0.2);
+		}
+		.about{
+			width: 100%;
+			position: absolute;
+			bottom: 10px;
+			z-index: 2;
+			font-size: 14px;
+			text-align: center;
+			color: gray;
+			-moz-opacity: 0.25;
+			opacity: .25;
+			filter: alpha(opacity=25);
+		}
+		#share{
+			cursor: pointer;
+			padding: 0 0.8em;
+			z-index: 5;
+			-moz-opacity: 0.8;
+			opacity: .8;
+			filter: alpha(opacity=80);
+			position: fixed;
+			top: 2em;
+			right: 2.5em;
+			color: #fff;
+			font-size: 14px;
+			line-height: 1.8em;
+			height: 1.8em;
+			text-align: center;
+			border: 1px solid #fff;
+			border-radius: 1.8em;
+			-moz-border-radius: 1.8em;
+			-webkit-border-radius: 1.8em; 
+			-webkit-transition: all 0.5s;
+			-o-transition: all 0.5s;
+			transition: all 0.5s;
+			background-color: rgba(211,211,211,0.2);
+			box-shadow: 0 0 2px #D3D3D3;
+			-moz-box-shadow: 0 0 2px #D3D3D3;
+			-webkit-box-shadow: 0 0 2px #D3D3D3;
+		}
+		#share:hover{
+			-moz-opacity: 0.85;
+			opacity: .85;
+			filter: alpha(opacity=85);
+			background-color: rgba(211,211,211,0);
+			box-shadow: 0 0 10px #D3D3D3;
+			-moz-box-shadow: 0 0 10px #D3D3D3;
+			-webkit-box-shadow: 0 0 10px #D3D3D3;
+		}
+		#share img{
+			width: 14px;
+			vertical-align: top;
+			margin: 0.4em 2px;
+			position: relative;
+			right: 2px;
+		}
+		.bdsharebuttonbox{
+			display: none;
+			font-size: 14px;
+			position: fixed;
+			top: 3.25em;
+			right: 0;
+			padding: 1.75em;
+			-moz-opacity: 0.85;
+			opacity: .85;
+			filter: alpha(opacity=85);
+		}
+		.newimg{
+			position: fixed;
+			z-index: 5;
+			bottom: 0;
+			right: 0;
+			height: 200px;
+			width: 141px;
+			-moz-opacity: 0.8;
+			opacity: .8;
+			filter: alpha(opacity=80);
+			cursor: pointer;
+			object-fit: contain;
+			-webkit-transition: all 2s;
+			-o-transition: all 2s;
+			transition: all 2s;
+		}
+		.newimg img{
+			object-fit: contain;
+			height: 100%;
+			width: 100%;
+		}
+		.newimg.bigimg{
+			height: 100%;
+			width: 100%;
+			-moz-opacity: 0.9;
+			opacity: .9;
+			filter: alpha(opacity=90);
+		}
+		ul.bdsList{
+			width: 92px;
+		}
+
+		.bdshare-button-style0-16 a{
+			background-size: 16px 16px;
+		}
+		.bdshare-button-style0-16 a.bds_copy{
+			background-image: url(img/copy.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_qzone{
+			background-image: url(img/qzone.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_tsina{
+			background-image: url(img/tsina.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_sqq{
+			background-image: url(img/sqq.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_weixin{
+			background-image: url(img/wenxin.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_fbook{
+			background-image: url(img/fbook.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_twi{
+			background-image: url(img/twi.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		.bdshare-button-style0-16 a.bds_linkedin{
+			background-image: url(img/linkedin.png);
+			background-position: 0 0;
+			margin: 6px 3px;
+		}
+		#warn{
+			color: #fff;
+			height: 32px;
+			line-height: 32px;
+			padding: 0 20px;
+			text-align: center;
+			position: fixed;
+			z-index: 3;
+			top: -48px;
+			left: 50%;
+			transform:translate(-50%,0);
+			-ms-transform:translate(-50%,0);	/* IE 9 */
+			-moz-transform:translate(-50%,0);	/* Firefox */
+			-webkit-transform:translate(-50%,0);  /* Safari 和 Chrome */
+			-o-transform:translate(-50%,0); 	/* Opera */
+			font-size: 12px;
+			border-radius: 6px;
+			-moz-border-radius: 6px;
+			-webkit-border-radius: 6px; 
+			background-color: rgba(211,211,211,0.3);
+			box-shadow: 0 0 8px #D3D3D3;
+			-moz-box-shadow: 0 0 8px #D3D3D3;
+			-webkit-box-shadow: 0 0 8px #D3D3D3;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		.about#toblues{
+			display: none;
+		}
+		@media screen and (max-width: 600px){
+			.newimg{
+				width: 100px;
+				height: 141px;
+			}
+			.main{
+				width: 100%;
+				left: 0;
+				top: 3.5em;
+				margin-left: 0;
+			}
+			.main_input{
+				width: 94%;
+			}
+			.main span{
+				display: none;
+			}
+			#enter img{
+				width: 30px;
+				position: absolute;
+				top: 8px;
+				right: 4.5%;
+			}
+			#tagsList{
+				width: 100%;
+				top: 30%;
+				margin: 30px auto;
+			}
+			#more_p{
+				display: none;
+			}
+			#share{
+				font-size: 14px;
+				top: 1.5em;
+				right: 1em;
+			}
+			ul.bdsList{
+				width: 186px;
+			}
+			.bdsharebuttonbox{
+				top: -0.25em;
+				right: 5.5em;
+			}
+			input[value]{
+				font-size: 14px;
+			}
+			#warn{
+				width: auto;
+				left: 1em;
+				right: 8em;
+				margin-left: 0;
+				border-radius: 15px;
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px; 
+				background-color: rgba(211,211,211,0.2);
+				box-shadow: 0 0 5px #D3D3D3;
+				-moz-box-shadow: 0 0 5px #D3D3D3;
+				-webkit-box-shadow: 0 0 5px #D3D3D3;
+				transform:translate(0,0);
+				-ms-transform:translate(0,0);	/* IE 9 */
+				-moz-transform:translate(0,0);	/* Firefox */
+				-webkit-transform:translate(0,0);  /* Safari 和 Chrome */
+				-o-transform:translate(0,0); 	/* Opera */
+			}
+		}
+	</style>
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+<img id="wallpaper" src="http://congm.in/bing.php"/>
+<div class="black_overlay"></div>
+<div class="white_content">
+	<div class="main">
+		<span>http://</span>
+		<input class="main_input" type="text" value="请输入内网网址（如：jwzx.cqupt.edu.cn）"/>
+		<a id="enter"><img src="img/enter.png" /></a>
+		<div id="more_p">
+			<p id="more"></p>
+		</div>
+	</div>
+	<div id="tagsList"> 
+		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
+		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
+		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
+		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
+		<a target="_blank" href="http://oa.cqupt.edu.cn.cqupt.congm.in">校务信息网</a>
+		<a target="_blank" href="http://oa.cqupt.edu.cn.cqupt.congm.in">校务信息网</a>
+		<a target="_blank" href="http://222.177.140.105.cqupt.congm.in">网上党校</a>
+		<a target="_blank" href="http://tsg.cqupt.edu.cn.cqupt.congm.in">图书馆</a>
+		<a target="_blank" href="http://tsg.cqupt.edu.cn.cqupt.congm.in">图书馆</a>
+		<a target="_blank" href="http://hongyan.cqupt.edu.cn/web">网址大全</a>
+		<a target="_blank" href="http://hongyan.cqupt.edu.cn">红岩网校</a>
+		<a target="_blank" href="http://xk1.cqupt.edu.cn.cqupt.congm.in/xk2014/">选课地址1</a>
+		<a target="_blank" href="http://xk2.cqupt.edu.cn.cqupt.congm.in">选课地址2</a>
+
+	</div>
+	<div class="newimg bigimg"><img src="new.jpg" /></div>
+	<div id="share"><img src="img/share.png" />分享</div>
+	<div class="bdsharebuttonbox" data-tag="share_default">
+		<ul class="bdsList">
+			<li><a class="bds_copy" data-cmd="copy"></a></li>
+			<li><a class="bds_qzone" target="_blank"></a></li>
+			<li><a class="bds_tsina" data-cmd="tsina"></a></li>
+			<li><a class="bds_sqq" data-cmd="sqq"></a></li>
+			<li><a class="bds_weixin" data-cmd="weixin"></a></li>
+			<li><a class="bds_twi" data-cmd="twi"></a></li>
+			<li><a class="bds_fbook" data-cmd="fbook"></a></li>
+			<li><a class="bds_linkedin" data-cmd="linkedin"></a></li>
+		</ul>
+	</div>
+</div>
+<div id="tome" class="about"><a target="_blank" href="http://congm.in">@ Cong Min </a></div>
+<div id="toblues" class="about"><a>@ 蓝山工作室 </a></div>
+<div id="warn"><span id="warn-text">为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡</span></div>
+<!-- script -->
+<script src="http://congm.in/index/js/jquery-1.x.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="tags.js"></script>
+<script type="text/javascript">
+$(function(){
+	var more = $("#more");
+	var enter = $("#enter");
+	$('.main_input').bind({ 
+		focus:function(){ 
+			if (this.value == this.defaultValue){ 
+				this.value = ""; 
+			}
+			more.hide();
+			enter.css("opacity",".7");
+			enter.css("filter","alpha(opacity=70)");
+		}, 
+		blur:function(){ 
+			if (this.value == ""){ 
+				this.value = this.defaultValue;
+			}
+			more.hide();
+			enter.css("opacity",".5");
+			enter.css("filter","alpha(opacity=50)");
+		},
+		keypress:function(event){
+			if(event.keyCode == "13"){
+                enter.click();
+            }
+		}
+	}); 
+	var url_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+	enter.hover(function(){
+		$(this).css("opacity",".9");
+		$(this).css("filter","alpha(opacity=90)");
+	},function(){
+		$(this).css("opacity",".5");
+		$(this).css("filter","alpha(opacity=50)");
+	});
+	enter.click(function(){
+		var main_input_val,main_input_array ;
+		var this_host="",this_url="";
+		main_input_val = $(".main_input").val();
+		if(main_input_val.indexOf("/")!=-1){
+			main_input_array = main_input_val.split("/");
+			this_host = main_input_array[0];
+			if(this_host=="jwzx.cqupt.edu.cn"){
+				this_url = "https://jwzx.cqupt.congm.in";
+			}else{
+				this_url = "http://" + this_host + ".cqupt.congm.in";
+			}
+			for(var j = 1; j < main_input_array.length; j++){
+				this_url += "/" + main_input_array[j];
+			}
+		}else{
+			this_host = main_input_val;
+			if(this_host=="jwzx.cqupt.edu.cn"){
+				this_url = "https://jwzx.cqupt.congm.in";
+			}else{
+				this_url = "http://" + this_host + ".cqupt.congm.in";
+			}
+		}
+		if(url_reg.test(this_host)){
+			window.open(this_url);
+			more.html('外网地址为：<a target="_blank" href="' + this_url + '">' + this_url + '</a><br><small>(若无法访问请检查地址或<a href="http://congm.in">联系作者Cong Min</a>)</small>');
+			more.show();
+		}else{
+			alert("输入的内网地址，格式有误！");
+		}
+	});
+	$("#share").click(function(){
+		$(".bdsharebuttonbox").fadeToggle();
+	});
+	$(".newimg").click(function(){
+		$(this).toggleClass("bigimg");
+	});
+	var s = $("#warn").get(0);
+	var si = $("#warn-text").get(0);
+	var s_scrollLeft, s_add=1, tmar;
+	setTimeout(function(){
+		$(".newimg").toggleClass("bigimg");
+	},750);
+	setTimeout(function(){
+		$("#warn").animate({"top": "18px"},"slow");
+	},2500);
+	setTimeout(function(){
+		mar();
+	},4000);
+	setTimeout(function(){
+		$("#warn").animate({"top": "-48px"},"slow");
+		clearTimeout(tmar);
+	},15000);
+	setTimeout(function(){
+		$("#warn-text").html("目前只支持http协议网址，如发现无法访问的内网网址或IP，请<a href='http://congm.in'>联系作者Cong Min</a>。");
+		$("#warn").animate({"top": "18px"},"slow");
+	},16000);
+	setTimeout(function(){
+		mar();
+	},17500);
+	setTimeout(function(){
+		$("#warn").animate({"top": "-48px"},"slow");
+		clearTimeout(tmar);
+	},25000);
+	function mar(){
+		if(s.offsetWidth<=si.offsetWidth){
+			s_scrollLeft=s.scrollLeft;
+			s.scrollLeft+=s_add;
+			if(s_scrollLeft==s.scrollLeft){
+				s_add=-s_add;
+			}
+			tmar = setTimeout(mar,20);
+		}
+	}
+	setTimeout(show_about,10000);
+	function show_about(){
+		$(".about#tome").fadeToggle();
+  		$(".about#toblues").fadeToggle();
+		setTimeout(show_about,10000);
+	}
+});
+</script>
+<script type="text/javascript">
+	window._bd_share_config = {
+		common : {
+			bdText : '重庆邮电大学 - 内网外入',
+			bdDesc : '戳进来，一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in',
+			bdUrl : 'http://cqupt.congm.in',
+			bdPic : 'http://cqupt.congm.in/img/cqupt.png',
+		},
+		share : [{
+			"tag" : "share_default",
+			"bdSize" : 16
+		}]
+	}
+
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+	(function(){
+		var p = {
+		url:location.href,
+		showcount:'0',/*是否显示分享总数,显示：'1'，不显示：'0' */
+		desc:'一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in',/*默认分享理由(可选)*/
+		summary:'戳进来，一站解决外网访问教务在线等内网所有网页!',/*分享摘要(可选)*/
+		title:'重庆邮电大学 - 内网外入',/*分享标题(可选)*/
+		site:'cqupt.congm.in',/*分享来源 如：腾讯网(可选)*/
+		pics:'http://cqupt.congm.in/img/cqupt.png' /*分享图片的路径(可选)*/
+		};
+		var s = [];
+		for(var i in p){
+		s.push(i + '=' + encodeURIComponent(p[i]||''));
+		}
+		$(".bds_qzone").attr("href","http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'));
+	})();
+</script>
+<script type="text/javascript">
+    function consoleSomething(){
+      if(/webkit/.test(navigator.userAgent.toLowerCase())) {
+        console.log('%c ', 'line-height:150px;background-image:url("http://congm.in/index/img/congminBlack.png");background-repeat:no-repeat;background-size:auto 150px;padding:75px 265px;');
+        console.log('%c @ Cong Min - 闵聪      http://congm.in', 'padding-left:32px;line-height:32px;font-family:"Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;color:#666;font-size:14px;');
+        console.log('%c 温馨提示：为了保证内网的安全，以及方便大家能够长期的使用内网外入，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡', 'color:#333;font-size:16px;')
+      }
+    }
+    consoleSomething();
+</script>
+</body>
+</html>
