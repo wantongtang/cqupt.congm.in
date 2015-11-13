@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="description" content="一站解决外网访问教务在线等内网所有网页！" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
-	<title>｡◕‿◕｡ -> 内网外入</title>
+	<title>｡◕‿◕｡ -&gt;  内网外入</title>
 	<style type="text/css">
 		*{
 			padding: 0;
@@ -77,7 +77,7 @@
 			box-shadow: 0 0 5px #D3D3D3;
 			-moz-box-shadow: 0 0 5px #D3D3D3;
 			-webkit-box-shadow: 0 0 5px #D3D3D3;
-			background-color: rgba(255,255,255,0.1); 
+			background-color: rgba(255,255,255,0.1);
 			-webkit-transition: all 0.5s;
 			-o-transition: all 0.5s;
 			transition: all 0.5s;
@@ -108,7 +108,7 @@
 		#more{
 			display: none;
 			font-weight: 300;
-			font-size: 14px; 
+			font-size: 14px;
 			line-height: 200%;
 			padding-top: 10px;
 			padding-left: 20px;
@@ -173,7 +173,7 @@
 			border: 1px solid #fff;
 			border-radius: 1.8em;
 			-moz-border-radius: 1.8em;
-			-webkit-border-radius: 1.8em; 
+			-webkit-border-radius: 1.8em;
 			-webkit-transition: all 0.5s;
 			-o-transition: all 0.5s;
 			transition: all 0.5s;
@@ -302,7 +302,7 @@
 			font-size: 12px;
 			border-radius: 6px;
 			-moz-border-radius: 6px;
-			-webkit-border-radius: 6px; 
+			-webkit-border-radius: 6px;
 			background-color: rgba(211,211,211,0.3);
 			box-shadow: 0 0 8px #D3D3D3;
 			-moz-box-shadow: 0 0 8px #D3D3D3;
@@ -366,7 +366,7 @@
 				margin-left: 0;
 				border-radius: 15px;
 				-moz-border-radius: 15px;
-				-webkit-border-radius: 15px; 
+				-webkit-border-radius: 15px;
 				background-color: rgba(211,211,211,0.2);
 				box-shadow: 0 0 5px #D3D3D3;
 				-moz-box-shadow: 0 0 5px #D3D3D3;
@@ -385,7 +385,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -403,7 +403,7 @@ var _hmt = _hmt || [];
 			<p id="more"></p>
 		</div>
 	</div>
-	<div id="tagsList"> 
+	<div id="tagsList">
 		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
 		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
 		<a target="_blank" href="https://jwzx.cqupt.congm.in">教务在线</a>
@@ -419,7 +419,7 @@ var _hmt = _hmt || [];
 		<a target="_blank" href="http://xk2.cqupt.edu.cn.cqupt.congm.in">选课地址2</a>
 
 	</div>
-	<div class="newimg bigimg"><img src="new.jpg" /></div>
+	<!--<div class="newimg bigimg"><img src="new.jpg" /></div>-->
 	<div id="share"><img src="img/share.png" />分享</div>
 	<div class="bdsharebuttonbox" data-tag="share_default">
 		<ul class="bdsList">
@@ -444,17 +444,17 @@ var _hmt = _hmt || [];
 $(function(){
 	var more = $("#more");
 	var enter = $("#enter");
-	$('.main_input').bind({ 
-		focus:function(){ 
-			if (this.value == this.defaultValue){ 
-				this.value = ""; 
+	$('.main_input').bind({
+		focus:function(){
+			if (this.value == this.defaultValue){
+				this.value = "";
 			}
 			more.hide();
 			enter.css("opacity",".7");
 			enter.css("filter","alpha(opacity=70)");
-		}, 
-		blur:function(){ 
-			if (this.value == ""){ 
+		},
+		blur:function(){
+			if (this.value == ""){
 				this.value = this.defaultValue;
 			}
 			more.hide();
@@ -466,7 +466,7 @@ $(function(){
                 enter.click();
             }
 		}
-	}); 
+	});
 	var url_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
 	enter.hover(function(){
 		$(this).css("opacity",".9");
