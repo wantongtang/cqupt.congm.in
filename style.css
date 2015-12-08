@@ -222,35 +222,42 @@ ul.bdsList{
 	background-size: 16px 16px;
 }
 .bdshare-button-style0-16 a.bds_copy{
-	background: url(img/copy.png) 0 0;
+	background-image: url(img/copy.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_qzone{
-	background: url(img/qzone.png) 0 0;
+	background-image: url(img/qzone.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_tsina{
-	background: url(img/tsina.png) 0 0;
+	background-image: url(img/tsina.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_sqq{
-	background: url(img/sqq.png) 0 0;
+	background-image: url(img/sqq.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_weixin{
-	background: url(img/wenxin.png) 0 0;
+	background-image: url(img/wenxin.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_fbook{
-	background: url(img/fbook.png) 0 0;
+	background-image: url(img/fbook.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_twi{
-	background: url(img/twi.png) 0 0;
+	background-image: url(img/twi.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_linkedin{
-	background: url(img/linkedin.png) 0 0;
+	background-image: url(img/linkedin.png) 0 0;
 	margin: 6px 3px;
 }
 #warn{
