@@ -257,7 +257,8 @@ ul.bdsList{
 	margin: 6px 3px;
 }
 .bdshare-button-style0-16 a.bds_linkedin{
-	background-image: url(img/linkedin.png) 0 0;
+	background-image: url(img/linkedin.png);
+    background-position: 0 0;
 	margin: 6px 3px;
 }
 #warn{
