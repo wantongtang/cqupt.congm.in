@@ -56,7 +56,7 @@ $(function() {
             return 0;
         }
     };
-    enter.click(function () {
+    enter.on("click", function () {
         more.show();
         var main_input_val = main_input.val();
         var url = turl(main_input_val);
@@ -64,8 +64,12 @@ $(function() {
             window.open(url);
         }
     });
-    $("#share").click(function () {
-        $(".bdsharebuttonbox").fadeToggle();
+    var sharebtn =  $(".bdsharebuttonbox");
+    $("#share").on("mouseover", function () {
+        sharebtn.fadeIn();
+    });
+    $(".shareBox").on("mouseleave", function () {
+        sharebtn.fadeOut();
     });
     //顶部悬浮提醒框
     var warn = $("#warn");
@@ -92,23 +96,28 @@ $(function() {
             clearTimeout(tmar);
         },
         down: function (text) {
+            var t = {
+                showTime: 2500,
+                moveTime: 4000,
+                totalTime: 15000
+            };
             $.each(text, function (i, e) {
                 setTimeout(function () {
                     s.scrollLeft = 0;
                     warn_text.html(e);
                     warn.animate({"top": "18px"}, "slow");
-                }, 12500 * i + 2500);
+                }, t.totalTime * i + t.showTime);
                 setTimeout(function () {
                     mar();
-                }, 12500 * i + 4000);
+                }, t.totalTime * i + t.moveTime);
                 setTimeout(function () {
                     warnBox.up();
-                }, 12500 * i + 12500);
+                }, t.totalTime * i + t.totalTime);
 
             });
         }
     };
-    var warn_text_array = ["为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡", "目前只支持http协议，如发现无法访问的内网网址或IP，请<a href='http://congm.in'>联系作者Cong Min</a>。"];
+    var warn_text_array = ["目前只支持http协议的网址，如发现无法访问的内网网址或IP，请尝试粘贴到下方输入框访问，或者<a href='http://congm.in'>联系作者Cong Min</a>。", "为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡"];
     warnBox.down(warn_text_array);
     //底部信息切换
     setTimeout(show_about, 10000);

@@ -128,7 +128,7 @@ input[value]{
 	width:400px;
 	height:300px;
 	top: 33%;
-	margin: 90px auto 0;
+	margin: 75px auto 0;
 	-moz-opacity: 0.95;
 	opacity: .95;
 	filter: alpha(opacity=95);
@@ -160,17 +160,23 @@ input[value]{
 	opacity: .25;
 	filter: alpha(opacity=25);
 }
+.shareBox{
+	position: fixed;
+	top: 2em;
+	right: 1em;
+	width: 120px;
+	height: 100px;
+}
 #share{
 	cursor: pointer;
 	padding: 0 0.8em;
+	margin: 0 auto;
 	z-index: 5;
 	-moz-opacity: 0.8;
 	opacity: .8;
 	filter: alpha(opacity=80);
-	position: fixed;
-	top: 2em;
-	right: 2.5em;
 	color: #fff;
+	width: 50px;
 	font-size: 14px;
 	line-height: 1.8em;
 	height: 1.8em;
@@ -206,10 +212,8 @@ input[value]{
 .bdsharebuttonbox{
 	display: none;
 	font-size: 14px;
-	position: fixed;
-	top: 3.25em;
-	right: 0;
-	padding: 1.75em;
+	width: 92px;
+	margin: 10px auto;
 	-moz-opacity: 0.85;
 	opacity: .85;
 	filter: alpha(opacity=85);
@@ -321,17 +325,21 @@ ul.bdsList{
     #more{
 		padding-left: 0;
 	}
+	.shareBox{
+		top: 1.25em;
+		right: 0;
+		width: 200px;
+		height: 75px;
+	}
 	#share{
 		font-size: 14px;
-		top: 1.5em;
-		right: 1em;
+		margin-right: 0.85em; 
 	}
 	ul.bdsList{
 		width: 186px;
 	}
 	.bdsharebuttonbox{
-		top: -0.25em;
-		right: 5.5em;
+		width: 186px;
 	}
 	input[value]{
 		font-size: 14px;
