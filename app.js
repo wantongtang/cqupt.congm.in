@@ -50,7 +50,7 @@ $(function() {
         }
         if (url_reg.test(host)) {
             more_text.html('外网地址为：<a target="_blank" href="' + out_url + '">' + out_url + '</a><br><small>(若无法访问请检查地址或<a href="http://congm.in">联系作者Cong Min</a>)</small>');
-            return out_url;
+            return out_url + "/";
         } else {
             more_text.html('输入的内网地址，格式有误！<br>请检查后重新输入。(注: http://前缀已补全)');
             return 0;
@@ -117,8 +117,11 @@ $(function() {
             });
         }
     };
-    var warn_text_array = ["目前只支持http协议的网址，如发现无法访问的内网网址或IP，请尝试粘贴到下方输入框访问，或者<a href='http://congm.in'>联系作者Cong Min</a>。", "为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡"];
-    warnBox.down(warn_text_array);
+    $.getJSON("data.json", function(json){
+        var warn_text_array = json.warn;
+        warnBox.down(warn_text_array);
+    });
+    
     //底部信息切换
     setTimeout(show_about, 10000);
     function show_about() {
