@@ -1,8 +1,6 @@
 $(function() {
-    var main_input = $('.main_input');
-    var enter = $("#enter");
-    var more = $("#more");
-    var more_text = $("#more p");
+    var main_input = $('.main_input'), enter = $("#enter"), more = $("#more"), $tagsList = $("#tagsList");
+    var more_text = more.find("p");
     main_input.on({
         focus: function () {
             if (this.value == this.defaultValue) {
@@ -26,36 +24,31 @@ $(function() {
     });
     //转换地址
     var turl = function (in_url) {
-        var url_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
-        var host, out_url;
-        if (in_url.indexOf("/") != -1) {
-            //分割原地址
-            var url_array = in_url.split("/");
-            host = url_array[0];
-            if (host == "jwzx.cqupt.edu.cn") {
-                out_url = "https://jwzx.cqupt.congm.in";
-            } else {
-                out_url = "http://" + host + ".cqupt.congm.in";
-            }
-            for (var j = 1; j < url_array.length; j++) {
-                out_url += "/" + url_array[j];
-            }
-        } else {
-            host = in_url;
-            if (host == "jwzx.cqupt.edu.cn") {
-                out_url = "https://jwzx.cqupt.congm.in";
-            } else {
-                out_url = "http://" + host + ".cqupt.congm.in";
-            }
+        var host, out_url, url_array, url_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+        var thost = function (in_host) {
+            //判断host
+            return (in_host == "jwzx.cqupt.edu.cn")?"https://jwzx.cqupt.congm.in":("http://" + host + ".cqupt.congm.in");
+        };
+        //分割原地址
+        url_array = in_url.split("/");
+        host = url_array[0];
+        out_url = thost(host);
+        for (var j = 1; j < url_array.length; j++) {
+            out_url += "/" + url_array[j];
+        }
+        if (url_array[url_array.length-1].indexOf(".")==-1) {
+            out_url += "/";
         }
         if (url_reg.test(host)) {
             more_text.html('外网地址为：<a target="_blank" href="' + out_url + '">' + out_url + '</a><br><small>(若无法访问请检查地址或<a href="http://congm.in">联系作者Cong Min</a>)</small>');
-            return out_url + "/";
+            return out_url;
         } else {
             more_text.html('输入的内网地址，格式有误！<br>请检查后重新输入。(注: http://前缀已补全)');
             return 0;
         }
     };
+
+    //输入框确认点击
     enter.on("click", function () {
         more.show();
         var main_input_val = main_input.val();
@@ -64,6 +57,7 @@ $(function() {
             window.open(url);
         }
     });
+    //分享按钮
     var sharebtn =  $(".bdsharebuttonbox");
     $("#share").on("mouseover", function () {
         sharebtn.fadeIn();
@@ -72,10 +66,8 @@ $(function() {
         sharebtn.fadeOut();
     });
     //顶部悬浮提醒框
-    var warn = $("#warn");
-    var warn_text = $("#warn-text");
-    var s = warn.get(0);
-    var si = warn_text.get(0);
+    var warn = $("#warn"), warn_text = $("#warn-text");
+    var s = warn.get(0), si = warn_text.get(0);
     var s_scrollLeft, s_add = 1, tmar;
     //文字滑动
     function mar() {
@@ -117,9 +109,14 @@ $(function() {
             });
         }
     };
+    //读取josn数据，顶部悬浮提醒框warn文本及tagList快捷链接
     $.getJSON("data.json", function(json){
         var warn_text_array = json.warn;
+        var tagsList = json.tagsList;
         warnBox.down(warn_text_array);
+        $.each(tagsList, function(i, e){
+            $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
+        });
     });
     
     //底部信息切换
@@ -130,29 +127,30 @@ $(function() {
         setTimeout(show_about, 10000);
     }
     //console.log();
-    consoleSomething();
-    function consoleSomething() {
+    (function consoleSomething() {
         if (/webkit/.test(navigator.userAgent.toLowerCase())) {
             console.log('%c ', 'line-height:150px;background-image:url("http://congm.in/index/img/congminBlack.png");background-repeat:no-repeat;background-size:auto 150px;padding:75px 265px;');
             console.log('%c @ Cong Min - 闵聪      http://congm.in', 'padding-left:32px;line-height:32px;font-family:"Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;color:#666;font-size:14px;');
             console.log('%c 温馨提示：为了保证内网的安全，以及方便大家能够长期的使用内网外入，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡', 'color:#333;font-size:16px;')
         }
-    }
+    })();
 });
 //百度分享插件
-window._bd_share_config = {
-    common: {
-        bdText: '重庆邮电大学 - 内网外入',
-        bdDesc: '戳进来，一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in',
-        bdUrl: 'http://cqupt.congm.in',
-        bdPic: 'http://cqupt.congm.in/img/cqupt.png',
-    },
-    share: [{
-        "tag": "share_default",
-        "bdSize": 16
-    }]
-};
-with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+(function () {
+    window._bd_share_config = {
+        common: {
+            bdText: '重庆邮电大学 - 内网外入',
+            bdDesc: '戳进来，一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in',
+            bdUrl: 'http://cqupt.congm.in',
+            bdPic: 'http://cqupt.congm.in/img/cqupt.png',
+        },
+        share: [{
+            "tag": "share_default",
+            "bdSize": 16
+        }]
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+})();
 //空间分享
 (function () {
     var p = {
