@@ -41,7 +41,7 @@ input[value]{
 	opacity: .5;
 	filter: alpha(opacity=50);
 }
-.white_content{
+.content{
 	position: absolute;
 	z-index: 2;
 	text-align:center;
@@ -160,14 +160,11 @@ input[value]{
 	opacity: .25;
 	filter: alpha(opacity=25);
 }
-.shareBox{
+#share{
 	position: fixed;
 	top: 2em;
-	right: 1em;
+	right: 2em;
 	width: 120px;
-	height: 100px;
-}
-#share{
 	cursor: pointer;
 	padding: 0 0.8em;
 	margin: 0 auto;
@@ -208,62 +205,6 @@ input[value]{
 	margin: 0.4em 2px;
 	position: relative;
 	right: 2px;
-}
-.bdsharebuttonbox{
-	display: none;
-	font-size: 14px;
-	width: 92px;
-	margin: 10px auto;
-	-moz-opacity: 0.85;
-	opacity: .85;
-	filter: alpha(opacity=85);
-}
-ul.bdsList{
-	width: 92px;
-}
-
-.bdshare-button-style0-16 a{
-	background-size: 16px 16px;
-}
-.bdshare-button-style0-16 a.bds_copy{
-	background-image: url(img/copy.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_qzone{
-	background-image: url(img/qzone.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_tsina{
-	background-image: url(img/tsina.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_sqq{
-	background-image: url(img/sqq.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_weixin{
-	background-image: url(img/wenxin.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_fbook{
-	background-image: url(img/fbook.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_twi{
-	background-image: url(img/twi.png);
-    background-position: 0 0;
-	margin: 6px 3px;
-}
-.bdshare-button-style0-16 a.bds_linkedin{
-	background-image: url(img/linkedin.png);
-    background-position: 0 0;
-	margin: 6px 3px;
 }
 #warn{
 	color: #fff;

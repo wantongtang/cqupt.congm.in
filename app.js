@@ -129,42 +129,26 @@ $(function() {
     //console.log();
     (function consoleSomething() {
         if (/webkit/.test(navigator.userAgent.toLowerCase())) {
-            console.log('%c ', 'line-height:150px;background-image:url("http://congm.in/index/img/congminBlack.png");background-repeat:no-repeat;background-size:auto 150px;padding:75px 265px;');
-            console.log('%c @ Cong Min - 闵聪      http://congm.in', 'padding-left:32px;line-height:32px;font-family:"Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;color:#666;font-size:14px;');
+            console.log('%c ', 'line-height:150px;background-image:url("https://congm.in/index/img/congminBlack.png");background-repeat:no-repeat;background-size:auto 150px;padding:75px 265px;');
+            console.log('%c @ Cong Min - 闵聪      https://congm.in', 'padding-left:32px;line-height:32px;font-family:"Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;color:#666;font-size:14px;');
             console.log('%c 温馨提示：为了保证内网的安全，以及方便大家能够长期的使用内网外入，请文明和谐的使用，不要调皮，切记切记｡◕‿◕｡', 'color:#333;font-size:16px;')
         }
     })();
 });
-//百度分享插件
-(function () {
-    window._bd_share_config = {
-        common: {
-            bdText: '重庆邮电大学 - 内网外入',
-            bdDesc: '戳进来，一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in',
-            bdUrl: 'http://cqupt.congm.in',
-            bdPic: 'http://cqupt.congm.in/img/cqupt.png',
-        },
-        share: [{
-            "tag": "share_default",
-            "bdSize": 16
-        }]
-    };
-    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-})();
 //空间分享
 (function () {
     var p = {
         url: location.href,
-        showcount: '0', /*是否显示分享总数,显示：'1'，不显示：'0' */
-        desc: '一站解决外网访问教务在线等内网所有网页！http://cqupt.congm.in', /*默认分享理由(可选)*/
+        showcount: '1', /*是否显示分享总数,显示：'1'，不显示：'0' */
+        desc: '一站解决外网访问教务在线等内网所有网页！https://cqupt.congm.in', /*默认分享理由(可选)*/
         summary: '戳进来，一站解决外网访问教务在线等内网所有网页!', /*分享摘要(可选)*/
         title: '重庆邮电大学 - 内网外入', /*分享标题(可选)*/
         site: 'cqupt.congm.in', /*分享来源 如：腾讯网(可选)*/
-        pics: 'http://cqupt.congm.in/img/cqupt.png' /*分享图片的路径(可选)*/
+        pics: 'https://cqupt.congm.in/img/cqupt.png' /*分享图片的路径(可选)*/
     };
     var s = [];
     for (var i in p) {
         s.push(i + '=' + encodeURIComponent(p[i] || ''));
     }
-    $(".bds_qzone").attr("href", "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'));
+    $(".share_qzone").attr("href", "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'));
 })();
