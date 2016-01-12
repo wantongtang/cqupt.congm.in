@@ -251,7 +251,8 @@ input[value]{
 		margin-left: 0;
 	}
 	.main_input{
-		width: 94%;
+		position: relative;
+		width: 92%;
 		padding-left: 1em;
 	}
 	input[value]{
@@ -265,9 +266,8 @@ input[value]{
 		width: 30px;
 		height: 30px;
 		position: absolute;
-		top: 50%;
-		margin-top: -15px;
-		right: 0.4em;
+		top: 8px;
+		right: 4%;
 	}
 	#enter img {
 		width: 100%;
