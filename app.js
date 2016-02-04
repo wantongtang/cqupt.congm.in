@@ -118,7 +118,38 @@ $(function() {
             $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
         });
     });
-    
+    //升起动画控制
+    var iUp = (function() {
+        var t = 0,
+            d = 200,
+            clean = function(){
+                t = 0;
+            },
+            up = function(e) {
+                setTimeout(function() {
+                    $(e).addClass("up")
+                }, t);
+                t += d;
+            },
+            down = function(e){
+                $(e).removeClass("up");
+            },
+            toggle = function(e){
+                setTimeout(function() {
+                    $(e).toggleClass("up")
+                }, t);
+                t += d;
+            };
+        return {
+            clean: clean,
+            up: up,
+            down: down,
+            toggle: toggle
+        }
+    })();
+    $(".iUp").each(function(i, e) {
+        iUp.up(e);
+    });
     //底部信息切换
     setTimeout(show_about, 10000);
     function show_about() {
