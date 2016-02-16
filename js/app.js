@@ -41,23 +41,34 @@ $(function() {
         $.each(tagsList, function(i, e){
             $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
         });
+        tagsInit();
     });
     var status = {
         on: function(){
-            $status.find("i").addClass("on");
+            $status.find("i").attr("class", "on");
             $status.find("span").text("服务器在线");
         },
         off: function(){
-            $status.find("i").addClass("off");
+            $status.find("i").attr("class", "off");
             $status.find("span").text("服务器离线");
         }
     };
     //服务器状态
-    $.getJSON("//host.congm.in/status.php?callback=?", function(data){
-        if($.parseJSON(data).status == 'ok'){
-            status.on();
-        }else{
-            status.off();
+    $.ajax({
+        url: "//host.congm.in/status.php?callback=?",
+        dataType: "jsonp",
+        timeout : 3000,
+        success: function(data){
+            if($.parseJSON(data).status == 'ok'){
+                status.on();
+            }else{
+                status.off();
+            }
+        },
+        complete : function(XMLHttpRequest, statusText){
+            if(statusText != 'success' || XMLHttpRequest.statusText != 'success'){
+                status.off();
+            }
         }
     });
     main_input.on({
