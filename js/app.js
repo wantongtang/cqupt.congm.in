@@ -54,7 +54,7 @@ $(function() {
         }
     };
     //服务器状态
-    $.ajax({
+    var statusQuery = $.ajax({
         url: "//host.congm.in/status.php?callback=?",
         dataType: "jsonp",
         timeout : 3000,
@@ -65,8 +65,9 @@ $(function() {
                 status.off();
             }
         },
-        complete : function(XMLHttpRequest, statusText){
-            if(statusText != 'success' || XMLHttpRequest.statusText != 'success'){
+        complete : function(XMLHttpRequest){
+            if(XMLHttpRequest.statusText != 'success'){
+                statusQuery.abort();
                 status.off();
             }
         }
