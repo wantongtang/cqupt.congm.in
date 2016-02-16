@@ -1,6 +1,65 @@
 $(function() {
-    var main_input = $('.main_input'), enter = $("#enter"), more = $("#more"), $tagsList = $("#tagsList");
+    var main_input = $('.main_input'), enter = $("#enter"), more = $("#more"), $tagsList = $("#tagsList"), $status = $("#status");
     var more_text = more.find("p");
+    //升起动画控制
+    var iUp = (function() {
+        var t = 0,
+            d = 200,
+            clean = function(){
+                t = 0;
+            },
+            up = function(e) {
+                setTimeout(function() {
+                    $(e).addClass("up")
+                }, t);
+                t += d;
+            },
+            down = function(e){
+                $(e).removeClass("up");
+            },
+            toggle = function(e){
+                setTimeout(function() {
+                    $(e).toggleClass("up")
+                }, t);
+                t += d;
+            };
+        return {
+            clean: clean,
+            up: up,
+            down: down,
+            toggle: toggle
+        }
+    })();
+    $(".iUp").each(function(i, e) {
+        iUp.up(e);
+    });
+    //读取josn数据，顶部悬浮提醒框warn文本及tagList快捷链接
+    $.getJSON("./data.json?" + new Date().getTime(), function(data){
+        var warn_text_array = data.warn;
+        var tagsList = data.tagsList;
+        warnBox.down(warn_text_array);
+        $.each(tagsList, function(i, e){
+            $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
+        });
+    });
+    var status = {
+        on: function(){
+            $status.find("i").addClass("on");
+            $status.find("span").text("服务器在线");
+        },
+        off: function(){
+            $status.find("i").addClass("off");
+            $status.find("span").text("服务器离线");
+        }
+    };
+    //服务器状态
+    $.getJSON("//host.congm.in/status.php?callback=?", function(data){
+        if($.parseJSON(data).status == 'ok'){
+            status.on();
+        }else{
+            status.off();
+        }
+    });
     main_input.on({
         focus: function () {
             if (this.value == this.defaultValue) {
@@ -47,7 +106,6 @@ $(function() {
             return 0;
         }
     };
-
     //输入框确认点击
     enter.on("click", function () {
         more.show();
@@ -80,7 +138,6 @@ $(function() {
             tmar = setTimeout(mar, 20);
         }
     }
-
     //框体升降
     var warnBox = {
         up: function () {
@@ -109,47 +166,6 @@ $(function() {
             });
         }
     };
-    //读取josn数据，顶部悬浮提醒框warn文本及tagList快捷链接
-    $.getJSON("data.json", function(json){
-        var warn_text_array = json.warn;
-        var tagsList = json.tagsList;
-        warnBox.down(warn_text_array);
-        $.each(tagsList, function(i, e){
-            $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
-        });
-    });
-    //升起动画控制
-    var iUp = (function() {
-        var t = 0,
-            d = 200,
-            clean = function(){
-                t = 0;
-            },
-            up = function(e) {
-                setTimeout(function() {
-                    $(e).addClass("up")
-                }, t);
-                t += d;
-            },
-            down = function(e){
-                $(e).removeClass("up");
-            },
-            toggle = function(e){
-                setTimeout(function() {
-                    $(e).toggleClass("up")
-                }, t);
-                t += d;
-            };
-        return {
-            clean: clean,
-            up: up,
-            down: down,
-            toggle: toggle
-        }
-    })();
-    $(".iUp").each(function(i, e) {
-        iUp.up(e);
-    });
     //底部信息切换
     setTimeout(show_about, 10000);
     function show_about() {
