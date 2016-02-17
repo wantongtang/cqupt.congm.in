@@ -44,6 +44,10 @@ $(function() {
         tagsInit();
     });
     var status = {
+        reset: function(){
+            $status.find("i").attr("class", "reset");
+            $status.find("span").text("正在查询中");
+        },
         on: function(){
             $status.find("i").attr("class", "on");
             $status.find("span").text("服务器在线");
@@ -54,24 +58,29 @@ $(function() {
         }
     };
     //服务器状态
-    var statusQuery = $.ajax({
-        url: "//host.congm.in/status.php?callback=?",
-        dataType: "jsonp",
-        timeout : 3000,
-        success: function(data){
-            if($.parseJSON(data).status == 'ok'){
-                status.on();
-            }else{
-                status.off();
+    var statusQuery = function(){
+        status.reset();
+        var query = $.ajax({
+            url: "//host.congm.in/status.php?callback=?",
+            dataType: "jsonp",
+            timeout : 3000,
+            success: function(data){
+                if($.parseJSON(data).status == 'ok'){
+                    status.on();
+                }else{
+                    status.off();
+                }
+            },
+            complete : function(XMLHttpRequest){
+                if(XMLHttpRequest.statusText != 'success'){
+                    query.abort();
+                    status.off();
+                }
             }
-        },
-        complete : function(XMLHttpRequest){
-            if(XMLHttpRequest.statusText != 'success'){
-                statusQuery.abort();
-                status.off();
-            }
-        }
-    });
+        });
+    };
+    statusQuery();
+    $status.on("click", statusQuery);
     main_input.on({
         focus: function () {
             if (this.value == this.defaultValue) {

@@ -7,7 +7,7 @@ html{
     -webkit-text-size-adjust: none;
 }
 body{
-	font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei', sans-serif;
 	font-size:16px;
 }
 a{
@@ -18,7 +18,7 @@ ul,li{
 	list-style: none;
 }
 input[value]{
-	font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif;
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei', sans-serif;
 	font-size: 18px;
 	text-align: center;
 	color: rgba(255,255,255,0.95);
@@ -236,7 +236,6 @@ input[value]{
 	color: #fff;
 	font-size: 12px;
 	line-height: 13px;
-	font-weight: 100;
 	padding: 0.5em;
 	overflow: hidden;
 }
@@ -268,7 +267,7 @@ input[value]{
 	opacity: .8;
 	filter: alpha(opacity=80);
 }
-#status .query{
+#status .reset{
 	background: #999;
 }
 #status .on{
