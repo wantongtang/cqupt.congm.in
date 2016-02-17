@@ -6,7 +6,6 @@ var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");
     hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
-    var s = document.getElementsByTagName("script")[0];
     document.body.appendChild(hm);
 })();g
 /* 插入dom - 左上角固定链接 */
