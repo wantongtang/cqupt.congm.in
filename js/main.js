@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
     for(var i = 0; i < all_a.length; i++){
         var url_array = all_a[i].href.split("/");
         var protocol = url_array[0];
-        if(url_array.length > 2 && (protocol == "http:" || protocol == "https:") && !host_reg.text(url_array[2])){
+        if(url_array.length > 2 && (protocol == "http:" || protocol == "https:") && !host_reg.test(url_array[2])){
             url_array[2] += ".cqupt.congm.in";
             all_a[i].href = url_array.join('/');
         }
