@@ -6,7 +6,9 @@ var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");
     hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
-    document.body.appendChild(hm);
+    if(self == top){
+        document.body.appendChild(hm);
+    }
 })();
 /* 插入dom - 左上角固定链接 */
 (function(){
@@ -51,5 +53,7 @@ var _hmt = _hmt || [];
         'cqupt.congm.in' +
         '</small>' +
         '</a>';
-    document.body.insertAdjacentHTML("afterbegin", a);
+    if(self == top){
+        document.body.insertAdjacentHTML("afterbegin", a);
+    }
 })();
