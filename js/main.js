@@ -7,7 +7,7 @@ var _hmt = _hmt || [];
     var hm = document.createElement("script");
     hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
     document.body.appendChild(hm);
-})();g
+})();
 /* 插入dom - 左上角固定链接 */
 (function(){
     var a_css = "display:inline-block;" +
