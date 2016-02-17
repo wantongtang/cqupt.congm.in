@@ -54,7 +54,7 @@ $(function() {
         },
         off: function(){
             $status.find("i").attr("class", "off");
-            $status.find("span").text("服务器离线");
+            $status.find("span").text("服务器超时");
         }
     };
     //服务器状态

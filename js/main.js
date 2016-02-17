@@ -1,4 +1,15 @@
-/* 插入于内网页面中 */
+/* 插入于内网页面中
+ * cqupt.congm.in
+ * */
+/* 百度统计 */
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
+    var s = document.getElementsByTagName("script")[0];
+    document.body.appendChild(hm);
+})();g
+/* 插入dom - 左上角固定链接 */
 (function(){
     var a_css = "display:inline-block;" +
         "position:fixed;" +
@@ -34,12 +45,12 @@
         "font-size:11px;" +
         "font-weight:500;" +
         "line-height:18px;";
-    var box = '<a href="//cqupt.congm.in" style="' + a_css + '">' +
+    var a = '<a href="//cqupt.congm.in" style="' + a_css + '">' +
         '内网外入' +
         '<br>' +
         '<small style="' + small_css + '">' +
         'cqupt.congm.in' +
         '</small>' +
         '</a>';
-    document.body.insertAdjacentHTML("afterbegin", box);
+    document.body.insertAdjacentHTML("afterbegin", a);
 })();
