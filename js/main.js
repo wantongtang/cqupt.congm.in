@@ -60,7 +60,7 @@ var _hmt = _hmt || [];
 /* 链接地址转换 */
 (function(){
     var all_a = document.getElementsByTagName("a");
-    var host_reg = /.+\.cqupt\.congm\.in/;
+    var host_reg = /cqupt\.congm\.in/;
     for(var i = 0; i < all_a.length; i++){
         var url_array = all_a[i].href.split("/");
         var protocol = url_array[0];
