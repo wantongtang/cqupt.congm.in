@@ -104,22 +104,47 @@ $(function() {
     });
     //转换地址
     var turl = function (in_url) {
-        var host, out_url, url_array, url_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+        var host, out_url, url_array, host_reg = /^((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)(\.((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d)){3}$|^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/, port_reg = /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/, host_reg_result, port_reg_result = true;
+        var reg = function (reg, str) {
+            return !!reg.test(str);
+        };
         var thost = function (in_host) {
-            //判断host
-            return (in_host == "jwzx.cqupt.edu.cn")?"https://jwzx.cqupt.congm.in":("http://" + host + ".cqupt.congm.in");
+            var out_host, suffix;
+            //判断host是否已为转换后的地址
+            if (in_host.indexOf("cqupt.congm.in") == -1) {
+                suffix = ".cqupt.congm.in";
+            } else {
+                suffix = "";
+            }
+            //判断host是否为教务在线
+            if (in_host == "jwzx.cqupt.edu.cn") {
+                out_host = "https://jwzx.cqupt.congm.in";
+                return out_host;
+            }
+            //判断host是否有端口号
+            if (in_host.indexOf(":") == -1) {
+                host_reg_result = reg(host_reg, in_host);
+                out_host = "http://" + in_host + suffix;
+            } else {
+                host_array = in_host.split(":");
+                host_reg_result = reg(host_reg, host_array[0]);
+                port_reg_result = reg(port_reg, host_array[1]);
+                out_host = "http://" +  host_array[0] + suffix + ":" + host_array[1];
+            }
+            return out_host;
         };
         //分割原地址
         url_array = in_url.split("/");
         host = url_array[0];
         out_url = thost(host);
+        //拼接地址
         for (var j = 1; j < url_array.length; j++) {
             out_url += "/" + url_array[j];
         }
-        if (url_array[url_array.length-1].indexOf(".")==-1) {
+        if (url_array[url_array.length-1].indexOf(".") == -1) {
             out_url += "/";
         }
-        if (url_reg.test(host)) {
+        if (host_reg_result && port_reg_result) {
             more_text.html('外网地址为：<a target="_blank" href="' + out_url + '">' + out_url + '</a><br><small>(若无法访问请检查地址或<a href="http://congm.in">联系作者Cong Min</a>)</small>');
             return out_url;
         } else {

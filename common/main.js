@@ -44,12 +44,15 @@
 /* 链接地址转换 */
 (function(){
     var all_a = document.getElementsByTagName("a");
-    var host_reg = /cqupt\.congm\.in/;
     for(var i = 0; i < all_a.length; i++){
         var url_array = all_a[i].href.split("/");
-        var protocol = url_array[0];
-        if(url_array.length > 2 && (protocol == "http:" || protocol == "https:") && !host_reg.test(url_array[2])){
-            url_array[2] += ".cqupt.congm.in";
+        if(url_array.length > 2 && all_a[i].href.indexOf("//") != -1 && url_array[2].indexOf("cqupt.congm.in") == -1){
+            if(url_array[2].indexOf(":") == -1){
+                url_array[2] += ".cqupt.congm.in";
+            }else{g
+                var host_array = url_array[2].split(":");
+                url_array[2] = host_array[0] + ".cqupt.congm.in" + ":" + host_array[1];
+            }
             all_a[i].href = url_array.join('/');
         }
     }

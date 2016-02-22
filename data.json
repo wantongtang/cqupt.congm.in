@@ -1,6 +1,6 @@
 {
     "warn": [
-        "目前只支持http协议的网址，如发现无法访问的内网网址或IP，请尝试粘贴到下方输入框访问，或者<a href='http://congm.in'>联系作者Cong Min.😑</a>",
+        "如您有任何问题意见建议，<a href='https://github.com/mcc108/cqupt.congm.in/issues'>请到Github上的本托管项目中提交issues</a>，或者<a href='http://congm.in'>联系作者Cong Min.</a>",
         "为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记~👮"
     ],
     "tagsList": [
