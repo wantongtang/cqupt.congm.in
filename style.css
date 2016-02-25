@@ -341,7 +341,7 @@ input[value]{
 		height: 100%;
 		vertical-align: baseline;
 	}
-	#tagsList{
+	.tagcloud{
 		width: 100%;
 		top: 30%;
 		margin: 30px auto;
