@@ -49,7 +49,7 @@
         if(url_array.length > 2 && all_a[i].href.indexOf("//") != -1 && url_array[2].indexOf("cqupt.congm.in") == -1){
             if(url_array[2].indexOf(":") == -1){
                 url_array[2] += ".cqupt.congm.in";
-            }else{g
+            }else{
                 var host_array = url_array[2].split(":");
                 url_array[2] = host_array[0] + ".cqupt.congm.in" + ":" + host_array[1];
             }

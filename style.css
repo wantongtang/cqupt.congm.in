@@ -144,7 +144,7 @@ input[value]{
 #more p{
 	height: 50px;
 }
-#tagsList{
+.tagcloud{
 	visibility: hidden;
 	font-size: 16px;
 	position:relative;
@@ -156,7 +156,7 @@ input[value]{
 	opacity: .95;
 	filter: alpha(opacity=95);
 }
-#tagsList a{
+.tagcloud a{
 	position:absolute;
 	top:0;
 	left:0;
@@ -165,7 +165,7 @@ input[value]{
 	text-decoration:none;
 	padding: 3px 6px;
 }
-#tagsList a:hover{
+.tagcloud a:hover{
 	border: 1px solid #fff;
 	border-radius: 2px;
 	padding: 2px 5px;

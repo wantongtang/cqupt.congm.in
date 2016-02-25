@@ -1,5 +1,5 @@
 $(function() {
-    var main_input = $('.main_input'), enter = $("#enter"), more = $("#more"), $tagsList = $("#tagsList"), $status = $("#status");
+    var main_input = $('.main_input'), enter = $("#enter"), more = $("#more"), $tagcloud = $(".tagcloud"), $status = $("#status");
     var more_text = more.find("p");
     //升起动画控制
     var iUp = (function() {
@@ -36,12 +36,15 @@ $(function() {
     //读取josn数据，顶部悬浮提醒框warn文本及tagList快捷链接
     $.getJSON("./data.json?" + new Date().getTime(), function(data){
         var warn_text_array = data.warn;
-        var tagsList = data.tagsList;
+        var tags = data.tagsList;
         warnBox.down(warn_text_array);
-        $.each(tagsList, function(i, e){
-            $tagsList.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
+        $.each(tags, function(i, e){
+            $tagcloud.append("<a target='_blank' href='" + e.href + "'>" + e.title + "</a>");
         });
-        tagsInit();
+        tagcloud({
+            radius: 100,
+            fontsize: 18
+        });
     });
     var status = {
         reset: function(){
@@ -63,7 +66,7 @@ $(function() {
         var query = $.ajax({
             url: "//host.congm.in/status.php?callback=?",
             dataType: "jsonp",
-            timeout : 3000,
+            timeout : 10000,
             success: function(data){
                 if($.parseJSON(data).status == 'ok'){
                     status.on();
