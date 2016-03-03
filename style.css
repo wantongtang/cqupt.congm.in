@@ -1,3 +1,46 @@
+@font-face{
+	font-family: 'iconfont';
+	src: url('img/font/iconfont.eot'); /* IE9*/
+	src: url('img/font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('img/font/iconfont.woff') format('woff'), /* chrome、firefox */
+	url('img/font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url('img/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+	font-family: "iconfont" !important;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar{
+	background-color:#F1F1F1;
+	overflow:visible;
+	width:3px;
+}
+::-webkit-scrollbar-thumb{
+	background-color:rgba(0, 0, 0, .2);
+	background-clip:padding-box;
+	min-height:15px;
+	box-shadow:inset 1px 1px 0 rgba(0, 0, 0, .1),inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+::-webkit-scrollbar-thumb:vertical:hover{
+	background-color:rgba(0, 0, 0, .3);
+}
+::-webkit-scrollbar-thumb:vertical:active{
+	background-color:rgba(0, 0, 0, .5);
+}
+::-webkit-scrollbar-button{
+	height:0;
+	width:0;
+}
+::-webkit-scrollbar-track{
+	background-clip:padding-box;
+	border:solid transparent;
+	border-width:0 0 0 4px;
+}
+::-webkit-scrollbar-corner{
+	background:transparent;
+}
 *{
 	padding: 0;
 	margin: 0;
@@ -9,6 +52,7 @@ html{
 body{
 	font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei', sans-serif;
 	font-size:16px;
+	overflow: hidden;
 }
 a{
 	color: #fff;
@@ -59,7 +103,7 @@ input[value]{
 	opacity: .5;
 	filter: alpha(opacity=50);
 }
-.content{
+.main-box .content{
 	position: absolute;
 	z-index: 2;
 	text-align:center;
@@ -183,50 +227,50 @@ input[value]{
 	opacity: .25;
 	filter: alpha(opacity=25);
 }
-#share{
-	position: fixed;
-	top: 2em;
-	right: 2em;
+#discuss{
 	cursor: pointer;
-	padding: 0 0.8em;
-	margin: 0 auto;
+	position: fixed;
 	z-index: 5;
+	top: 0.6em;
+	right: 1.5em;
+	padding: 1em;
+	margin: 0 auto;
+	color: #fff;
+	height: 24px;
+	width: 24px;
+	font-size: 16px;
+	text-align: center;
 	-moz-opacity: 0.8;
 	opacity: .8;
 	filter: alpha(opacity=80);
-	color: #fff;
-	width: 50px;
-	font-size: 14px;
-	line-height: 1.8em;
-	height: 1.8em;
-	text-align: center;
-	border: 1px solid #fff;
-	border-radius: 1.8em;
-	-moz-border-radius: 1.8em;
-	-webkit-border-radius: 1.8em;
-	-webkit-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-	background-color: rgba(211,211,211,0.2);
-	box-shadow: 0 0 2px #D3D3D3;
-	-moz-box-shadow: 0 0 2px #D3D3D3;
-	-webkit-box-shadow: 0 0 2px #D3D3D3;
+	-webkit-transition: all 0.5s ease-in-out, color 1s ease-in-out;
+	-o-transition: all 0.5s ease-in-out, color 1s ease-in-out;
+	transition: all 0.5s ease-in-out, color 1s ease-in-out;
 }
-#share:hover{
-	-moz-opacity: 0.85;
-	opacity: .85;
-	filter: alpha(opacity=85);
-	background-color: rgba(211,211,211,0);
-	box-shadow: 0 0 10px #D3D3D3;
-	-moz-box-shadow: 0 0 10px #D3D3D3;
-	-webkit-box-shadow: 0 0 10px #D3D3D3;
+#discuss:hover{
+	-moz-opacity: 0.95;
+	opacity: .95;
+	filter: alpha(opacity=95);
 }
-#share img{
-	width: 14px;
-	vertical-align: top;
-	margin: 0.4em 2px;
-	position: relative;
-	right: 2px;
+#discuss .pinglun{
+	font-size: 24px;
+}
+#discuss .pinglun-text{
+	display: none;
+	position: absolute;
+	font-size: 16px;
+	right: -1.2em;
+	font-weight: 500;
+}
+#discuss.active{
+	height: 26px;
+	width: 26px;
+	z-index: 100;
+	margin-right: 260px;
+	color: #444;
+}
+#discuss.active .pinglun-text{
+	display: inline-block;
 }
 #status{
 	position: fixed;
@@ -306,6 +350,53 @@ input[value]{
 .about#toblues{
 	display: none;
 }
+.side-box{
+	position: fixed;
+	z-index: 99;
+	height: 100%;
+	width: 350px;
+	top: 0;
+	right: -350px;
+	background-color: rgba(255, 255, 255, 0.9);
+	-webkit-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	overflow: hidden;
+}
+.side-box.active{
+	right: 0;
+}
+.side-box header{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 65px;
+}
+.discuss-close{
+	cursor: pointer;
+	float: right;
+	padding: 1em;
+	margin-top: 0.8em;
+	margin-right: 0.8em;
+	height: 18px;
+	width: 18px;
+	opacity: .8;
+	filter: alpha(opacity=80);
+}
+.discuss-close img{
+	height: 18px;
+}
+.side-box .content{
+	width: 100%;
+	height: 100%;
+	margin-top: 65px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.side-box .content .duosuo{
+	padding: 0 20px 0 25px;
+}
 @media screen and (max-width: 600px){
 	.newimg{
 		width: 100px;
@@ -349,24 +440,16 @@ input[value]{
     #more{
 		padding-left: 0;
 	}
-	#share{
-		top: 1.35em;
-		right: 0.7em;
-		width: 1.8em;
-		padding: 0;
-		border: none;
-		box-shadow: none;
-		background: none;
+	#discuss{
+		right: 0;
+		padding: 0.6em;
 	}
-	#share:hover{
-		box-shadow: none;
-		background: none;
-		-moz-opacity: 0.9;
-		opacity: .9;
-		filter: alpha(opacity=90);
+	#discuss.active{
+		margin-right: 100%;
+		right: -60px;
 	}
-	#share span{
-		display: none;
+	#discuss .pinglun-text{
+		right: -1.5em;
 	}
 	#status{
 		top: 1.6em;
@@ -390,5 +473,16 @@ input[value]{
 		-moz-transform:translate(0,0);	/* Firefox */
 		-webkit-transform:translate(0,0);  /* Safari 和 Chrome */
 		-o-transform:translate(0,0); 	/* Opera */
+	}
+	.side-box{
+		width: 100%;
+		right: -100%;
+		background-color: rgba(255, 255, 255, 0.95);
+	}
+	.side-box.active{
+		right: 0;
+	}
+	.discuss-close{
+		margin-top: 0.5em;
 	}
 }

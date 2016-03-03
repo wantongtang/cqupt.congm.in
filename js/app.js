@@ -64,18 +64,18 @@ $(function() {
     var statusQuery = function(){
         status.reset();
         var query = $.ajax({
-            url: "//host.congm.in/status.php?callback=?",
-            dataType: "jsonp",
+            url: "//host.congm.in/status.json?" + new Date().getTime(),
+            dataType: "json",
             timeout : 10000,
             success: function(data){
-                if($.parseJSON(data).status == 'ok'){
+                if(data.status == 'ok'){
                     status.on();
                 }else{
                     status.off();
                 }
             },
-            complete : function(XMLHttpRequest){
-                if(XMLHttpRequest.statusText != 'success'){
+            complete: function(XMLHttpRequest){
+                if(XMLHttpRequest.status != 200){
                     query.abort();
                     status.off();
                 }
@@ -222,6 +222,15 @@ $(function() {
         $(".about#toblues").fadeToggle();
         setTimeout(show_about, 10000);
     }
+    //discuss
+    $("#discuss").click(function(){
+        $(this).addClass("active");
+        $(".side-box").addClass("active");
+    });
+    $(".discuss-close").click(function(){
+        $("#discuss").removeClass("active");
+        $(".side-box").removeClass("active");
+    });
     //console.log();
     (function consoleSomething() {
         if (/webkit/.test(navigator.userAgent.toLowerCase())) {
@@ -231,20 +240,3 @@ $(function() {
         }
     })();
 });
-//空间分享
-(function () {
-    var p = {
-        url: location.href,
-        showcount: '1', /*是否显示分享总数,显示：'1'，不显示：'0' */
-        desc: '一站解决外网访问教务在线等内网所有网页！https://cqupt.congm.in', /*默认分享理由(可选)*/
-        summary: '戳进来，一站解决外网访问教务在线等内网所有网页!', /*分享摘要(可选)*/
-        title: '重庆邮电大学 - 内网外入', /*分享标题(可选)*/
-        site: 'cqupt.congm.in', /*分享来源 如：腾讯网(可选)*/
-        pics: 'https://cqupt.congm.in/img/cqupt.png' /*分享图片的路径(可选)*/
-    };
-    var s = [];
-    for (var i in p) {
-        s.push(i + '=' + encodeURIComponent(p[i] || ''));
-    }
-    $(".share_qzone").attr("href", "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'));
-})();

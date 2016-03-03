@@ -18,31 +18,53 @@
 	</script>
 </head>
 <body>
-<img id="wallpaper" src="https://congm.in/bing.php"/>
+<img id="wallpaper" src="https://congm.in/bing.php">
 <div class="black_overlay"></div>
-<header>
-	<div id="status" title="服务器状态"><i></i><span></span></div>
-	<div id="warn"><span id="warn-text"></span></div>
-	<div id="share"><a class="share_qzone" target="_blank"><img src="img/share.png" /><span>分享</span></a></div>
-</header>
-<div class="content">
-	<div class="main iUp">
-		<label>
-			<span>http://</span>
-			<input class="main_input" type="text" value="请输入内网地址（如：jwzx.cqupt.edu.cn）" />
-		</label>
-		<a id="enter"><img src="img/enter.png" /></a>
-		<div id="more">
-			<p></p>
+<div class="main-box">
+	<header>
+		<div id="status" title="服务器状态"><i></i><span></span></div>
+		<div id="warn"><span id="warn-text"></span></div>
+		<div id="discuss"><span class="iconfont pinglun">&#xf00f8;</span><span class="pinglun-text">评论</span></div>
+	</header>
+	<div class="content">
+		<div class="main iUp">
+			<label>
+				<span>http://</span>
+				<input class="main_input" type="text" value="请输入内网地址（如：jwzx.cqupt.edu.cn）" />
+			</label>
+			<a id="enter"><img src="img/enter.png"></a>
+			<div id="more">
+				<p></p>
+			</div>
+		</div>
+		<div class="tagcloud"></div>
+	</div>
+	<footer>
+		<div id="tome" class="about"><a target="_blank" href="http://congm.in">@ Cong Min </a></div>
+		<div id="toblues" class="about"><a>@ 蓝山工作室 </a></div>
+	</footer>
+</div>
+<div class="side-box">
+	<header>
+		<div class="discuss-close"><img src="img/close.png"></div>
+	</header>
+	<div class="content">
+		<div class="duosuo">
+			<div class="ds-thread" data-thread-key="0" data-title="内网外入" data-url="https://cqupt.congm.in"></div>
+			<script type="text/javascript">
+				var duoshuoQuery = {short_name:"cqupt-inner"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0]
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
 		</div>
 	</div>
-	<div class="tagcloud">
-	</div>
 </div>
-<footer>
-	<div id="tome" class="about"><a target="_blank" href="http://congm.in">@ Cong Min </a></div>
-	<div id="toblues" class="about"><a>@ 蓝山工作室 </a></div>
-</footer>
 <!-- script -->
 <script src="js/jquery.min.js"></script>
 <script src="js/tagcloud.min.js"></script>
