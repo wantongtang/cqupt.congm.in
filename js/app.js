@@ -43,7 +43,7 @@ $(function() {
         });
         tagcloud({
             radius: 100,
-            fontsize: 18
+            fontsize: 17
         });
     });
     var status = {

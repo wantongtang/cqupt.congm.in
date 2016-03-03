@@ -1,5 +1,6 @@
 {
     "warn": [
+        "网络故障终于修复啦...😝",
         "如您有任何问题意见建议，<a href='https://github.com/mcc108/cqupt.congm.in/issues'>请到Github上的本托管项目中提交issues</a>，或者<a href='http://congm.in'>联系作者Cong Min.</a>",
         "为了方便大家长期使用以及保证内网安全，请文明和谐的使用，不要调皮，切记切记~👮"
     ],
@@ -29,11 +30,7 @@
             "title": "图书馆"
         },
         {
-            "href": "http://xk1.cqupt.edu.cn.cqupt.congm.in/xk2014/",
-            "title": "选课地址1"
-        },
-        {
-            "href": "http://xk1.cqupt.edu.cn.cqupt.congm.in/",
+            "href": "http://xk2.cqupt.edu.cn.cqupt.congm.in/",
             "title": "选课地址2"
         },
         {
