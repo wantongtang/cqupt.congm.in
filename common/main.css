@@ -140,7 +140,6 @@
     width: 350px;
     top: 0;
     right: -350px;
-    box-shadow: -5px 0 10px #999;
     background-color: rgba(255, 255, 255, 0.95);
     -webkit-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -149,6 +148,7 @@
 }
 #_cqupt-side-box.active{
     right: 0;
+    box-shadow: -5px 0 10px #999;
 }
 #_cqupt-side-box ._cqupt-header{
     position: absolute;

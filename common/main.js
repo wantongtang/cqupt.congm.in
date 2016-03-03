@@ -4,6 +4,7 @@
 
 /* 插入js */
 /* 百度统计 */
+var _hmt = _hmt || [];
 (function() {
     var baidu = document.createElement("script");
     baidu.src = "//hm.baidu.com/hm.js?d57aa305b1d347caa2d89b63bdcd298c";
@@ -58,12 +59,11 @@
 /* 多说 */
 var duoshuoQuery = {short_name:"cqupt-inner"};
 (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    var duosuo = document.createElement("script");
+    duosuo.src = "//cqupt.congm.in/js/duosuo_embed.min.js";
+    if(self == top){
+        document.body.appendChild(duosuo);
+    }
 })();
 
 /* 链接地址转换 */
