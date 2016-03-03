@@ -1,4 +1,4 @@
-#cqupt_congm_in {
+#_cqupt {
     display: inline-block;
     position: fixed;
     z-index: 999999;
@@ -29,14 +29,14 @@
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-#cqupt_congm_in:hover {
+#_cqupt:hover {
     opacity: .9;
     filter: alpha(opacity=90);
     box-shadow: 2px 1px 16px #666;
     -moz-box-shadow: 2px 1px 16px #666;
     -webkit-box-shadow: 2px 1px 16px #666;
 }
-#cqupt_congm_in small {
+#_cqupt small {
     margin: 0;
     padding: 0;
     color: #fff;
@@ -44,4 +44,143 @@
     font-size: 11px;
     font-weight: 500;
     line-height: 18px;
+}
+/* discuss */
+@font-face{
+    font-family: 'iconfont';
+    src: url('//host.congm.in/img/font/iconfont.eot'); /* IE9*/
+    src: url('//host.congm.in/img/font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//host.congm.in/img/font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('//host.congm.in/img/font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//host.congm.in/img/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+._cqupt-iconfont{
+    font-family: "iconfont" !important;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar{
+    background-color:#F1F1F1;
+    overflow:visible;
+    width:3px;
+}
+::-webkit-scrollbar-thumb{
+    background-color:rgba(0, 0, 0, .2);
+    background-clip:padding-box;
+    min-height:15px;
+    box-shadow:inset 1px 1px 0 rgba(0, 0, 0, .1),inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+::-webkit-scrollbar-thumb:vertical:hover{
+    background-color:rgba(0, 0, 0, .3);
+}
+::-webkit-scrollbar-thumb:vertical:active{
+    background-color:rgba(0, 0, 0, .5);
+}
+::-webkit-scrollbar-button{
+    height:0;
+    width:0;
+}
+::-webkit-scrollbar-track{
+    background-clip:padding-box;
+    border:solid transparent;
+    border-width:0 0 0 4px;
+}
+::-webkit-scrollbar-corner{
+    background:transparent;
+}
+#_cqupt-discuss{
+    cursor: pointer;
+    position: fixed;
+    z-index: 999998;
+    top: 0.6em;
+    right: 1.5em;
+    padding: 1em;
+    margin: 0 auto;
+    color: #444;
+    min-height: 24px;
+    min-width: 24px;
+    font-size: 16px;
+    text-align: center;
+    -moz-opacity: 0.8;
+    opacity: .8;
+    filter: alpha(opacity=80);
+    -webkit-transition: all 0.5s ease-in-out, color 1s ease-in-out;
+    -o-transition: all 0.5s ease-in-out, color 1s ease-in-out;
+    transition: all 0.5s ease-in-out, color 1s ease-in-out;
+}
+#_cqupt-discuss:hover{
+    -moz-opacity: 0.95;
+    opacity: .95;
+    filter: alpha(opacity=95);
+}
+#_cqupt-discuss ._cqupt-pinglun{
+    font-size: 24px;
+    line-height: 24px;
+}
+#_cqupt-discuss ._cqupt-pinglun-text{
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    right: -1.2em;
+    font-weight: 500;
+}
+#_cqupt-discuss.active{
+    z-index: 999999;
+    margin-right: 260px;
+    color: #444;
+}
+#_cqupt-discuss.active ._cqupt-pinglun-text{
+    display: inline-block;
+}
+#_cqupt-side-box{
+    position: fixed;
+    z-index: 999997;
+    height: 100%;
+    width: 350px;
+    top: 0;
+    right: -350px;
+    box-shadow: -5px 0 10px #999;
+    background-color: rgba(255, 255, 255, 0.95);
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+}
+#_cqupt-side-box.active{
+    right: 0;
+}
+#_cqupt-side-box ._cqupt-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+}
+#_cqupt-discuss-close{
+    cursor: pointer;
+    float: right;
+    padding: 1em;
+    margin-top: 0.8em;
+    margin-right: 0.8em;
+    min-height: 18px;
+    min-width: 18px;
+    opacity: .8;
+    filter: alpha(opacity=80);
+}
+#_cqupt-discuss-close img{
+    height: 18px;
+}
+#_cqupt-side-box ._cqupt-content{
+    width: 100%;
+    height: 100%;
+    margin-top: 65px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#_cqupt-side-box ._cqupt-content ._cqupt-duosuo{
+    padding: 0 20px 0 25px;
+}
+._cqupt-duosuo .ds-sync{
+    display: none !important;
 }

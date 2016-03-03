@@ -32,13 +32,38 @@
 
 /* 插入dom */
 (function(){
-    var a = '<a href="//cqupt.congm.in" id="cqupt_congm_in">' +
-                '内网外入' + '<br>' +
+    var a = '<a href="//cqupt.congm.in" id="_cqupt">' +
+                '内网外入<br>' +
                 '<small>cqupt.congm.in</small>' +
-            '</a>';
+            '</a>' +
+            '<div id="_cqupt-discuss">' +
+                '<span class="_cqupt-iconfont _cqupt-pinglun">&#xf00f8;</span>' +
+                '<span class="_cqupt-pinglun-text">评论</span>' +
+            '</div>' +
+            '<div id="_cqupt-side-box">' +
+                '<header class="_cqupt-header">' +
+                    '<div id="_cqupt-discuss-close"><img src="//cqupt.congm.in/img/close.png"></div>' +
+                '</header>' +
+                '<div class="_cqupt-content">' +
+                    '<div class="_cqupt-duosuo">' +
+                        '<div class="ds-thread" data-thread-key="1" data-title="内网外入" data-url="https://cqupt.congm.in"></div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
     if(self == top){
         document.body.insertAdjacentHTML("afterbegin", a);
     }
+})();
+
+/* 多说 */
+var duoshuoQuery = {short_name:"cqupt-inner"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
 
 /* 链接地址转换 */
@@ -56,4 +81,19 @@
             all_a[i].href = url_array.join('/');
         }
     }
+})();
+
+/* discuss */
+(function(){
+    var discuss = document.getElementById("_cqupt-discuss");
+    var side = document.getElementById("_cqupt-side-box");
+    var close = document.getElementById("_cqupt-discuss-close");
+    discuss.onclick = function(){
+        discuss.className = "active";
+        side.className = "active";
+    };
+    close.onclick = function(){
+        discuss.className = "";
+        side.className = "";
+    };
 })();
