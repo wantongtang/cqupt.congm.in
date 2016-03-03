@@ -21,39 +21,52 @@ var _hmt = _hmt || [];
     }
 })();
 
-/* 插入css */
 (function() {
+    /* 插入css */
     var css = document.createElement("link");
     css.rel = "stylesheet";
     css.href = "//cqupt.congm.in/common/main.css";
     if(self == top){
         document.head.appendChild(css);
     }
-})();
-
-/* 插入dom */
-(function(){
-    var a = '<a href="//cqupt.congm.in" id="_cqupt">' +
-                '内网外入<br>' +
-                '<small>cqupt.congm.in</small>' +
+    /* 插入dom */
+    css.onload = function(){
+        var a = '<a href="//cqupt.congm.in" id="_cqupt">' +
+            '内网外入<br>' +
+            '<small>cqupt.congm.in</small>' +
             '</a>' +
             '<div id="_cqupt-discuss">' +
-                '<span class="_cqupt-iconfont _cqupt-pinglun">&#xf00f8;</span>' +
-                '<span class="_cqupt-pinglun-text">评论</span>' +
+            '<span class="_cqupt-iconfont _cqupt-pinglun">&#xf00f8;</span>' +
+            '<span class="_cqupt-pinglun-text">评论</span>' +
             '</div>' +
             '<div id="_cqupt-side-box">' +
-                '<header class="_cqupt-header">' +
-                    '<div id="_cqupt-discuss-close"><img src="//cqupt.congm.in/img/close.png"></div>' +
-                '</header>' +
-                '<div class="_cqupt-content">' +
-                    '<div class="_cqupt-duosuo">' +
-                        '<div class="ds-thread" data-thread-key="1" data-title="内网外入" data-url="https://cqupt.congm.in"></div>' +
-                    '</div>' +
-                '</div>' +
+            '<header class="_cqupt-header">' +
+            '<div id="_cqupt-discuss-close"><img src="//cqupt.congm.in/img/close.png"></div>' +
+            '</header>' +
+            '<div class="_cqupt-content">' +
+            '<div class="_cqupt-duosuo">' +
+            '<div class="ds-thread" data-thread-key="1" data-title="内网外入" data-url="https://cqupt.congm.in"></div>' +
+            '</div>' +
+            '</div>' +
             '</div>';
-    if(self == top){
-        document.body.insertAdjacentHTML("afterbegin", a);
-    }
+        if(self == top){
+            document.body.insertAdjacentHTML("afterbegin", a);
+        }
+        /* discuss */
+        (function(){
+            var discuss = document.getElementById("_cqupt-discuss");
+            var side = document.getElementById("_cqupt-side-box");
+            var close = document.getElementById("_cqupt-discuss-close");
+            discuss.onclick = function(){
+                discuss.className = "active";
+                side.className = "active";
+            };
+            close.onclick = function(){
+                discuss.className = "";
+                side.className = "";
+            };
+        })();
+    };
 })();
 
 /* 多说 */
@@ -81,19 +94,4 @@ var duoshuoQuery = {short_name:"cqupt-inner"};
             all_a[i].href = url_array.join('/');
         }
     }
-})();
-
-/* discuss */
-(function(){
-    var discuss = document.getElementById("_cqupt-discuss");
-    var side = document.getElementById("_cqupt-side-box");
-    var close = document.getElementById("_cqupt-discuss-close");
-    discuss.onclick = function(){
-        discuss.className = "active";
-        side.className = "active";
-    };
-    close.onclick = function(){
-        discuss.className = "";
-        side.className = "";
-    };
 })();
