@@ -187,7 +187,12 @@
     color: #555;
     font-size: 14px;
 }
-._cqupt-duosuo .ds-sync{
+._cqupt-duosuo #ds-thread #ds-reset .ds-inline-replybox{
+    margin-left: -30px !important;
+}
+._cqupt-duosuo .ds-sync .ds-qqt,
+._cqupt-duosuo .ds-sync .ds-douban,
+._cqupt-duosuo .ds-sync .ds-renren{
     display: none !important;
 }
 /* 抖动 */

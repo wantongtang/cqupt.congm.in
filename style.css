@@ -401,7 +401,12 @@ input[value]{
 	color: #555;
 	font-size: 14px;
 }
-.duosuo .ds-sync{
+.duosuo #ds-thread #ds-reset .ds-inline-replybox{
+	margin-left: -30px !important;
+}
+.duosuo .ds-sync .ds-qqt,
+.duosuo .ds-sync .ds-douban,
+.duosuo .ds-sync .ds-renren{
 	display: none !important;
 }
 @media screen and (max-width: 600px){
