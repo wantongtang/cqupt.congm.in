@@ -99,7 +99,7 @@ var duoshuoQuery = {short_name:"cqupt-inner"};
     }
 })();
 
-/* 链接地址转换 */
+/* 链接及图片地址转换 */
 (function(){
     var all_a = document.getElementsByTagName("a");
     for(var i = 0; i < all_a.length; i++){
@@ -112,6 +112,21 @@ var duoshuoQuery = {short_name:"cqupt-inner"};
                 url_array[2] = host_array[0] + ".cqupt.congm.in" + ":" + host_array[1];
             }
             all_a[i].href = url_array.join('/');
+        }
+    }
+})();
+(function(){
+    var img_a = document.getElementsByTagName("img");
+    for(var i = 0; i < img_a.length; i++){
+        var url_array = img_a[i].src.split("/");
+        if(url_array.length > 2 && img_a[i].src.indexOf("//") != -1 && url_array[2].indexOf("cqupt.congm.in") == -1){
+            if(url_array[2].indexOf(":") == -1){
+                url_array[2] += ".cqupt.congm.in";
+            }else{
+                var host_array = url_array[2].split(":");
+                url_array[2] = host_array[0] + ".cqupt.congm.in" + ":" + host_array[1];
+            }
+            img_a[i].src = url_array.join('/');
         }
     }
 })();
