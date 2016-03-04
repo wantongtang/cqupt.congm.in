@@ -93,6 +93,7 @@ var duoshuoQuery = {short_name:"cqupt-inner"};
 (function() {
     var duosuo = document.createElement("script");
     duosuo.src = "//cqupt.congm.in/js/duosuo_embed.min.js";
+    duosuo.charset = "utf-8";
     if(self == top){
         document.body.appendChild(duosuo);
     }
