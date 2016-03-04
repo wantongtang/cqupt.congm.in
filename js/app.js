@@ -229,7 +229,7 @@ $(function() {
         el.setAttribute('data-title', '内网外入');
         el.setAttribute('data-url', 'https://cqupt.congm.in');
         DUOSHUO.EmbedThread(el);
-        $("#duosuo").html(el);
+        $(".duosuo").children().last().replaceWith(el);
         $(this).addClass("active");
         $(".side-box").addClass("active");
     });

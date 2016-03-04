@@ -127,7 +127,7 @@
 }
 #_cqupt-discuss.active{
     z-index: 999999;
-    margin-right: 260px;
+    margin-right: 262px;
     color: #444;
 }
 #_cqupt-discuss.active ._cqupt-pinglun-text{
@@ -186,6 +186,13 @@
 ._cqupt-duosuo ._cqupt-loading{
     color: #555;
     font-size: 14px;
+}
+._cqupt-duosuo #ds-share #ds-reset .ds-share-icons-16{
+    padding: 0 2px;
+}
+._cqupt-duosuo #ds-share #ds-reset .ds-share-icons-16>li a{
+    font-size: 14px !important;
+    color: #666 !important;
 }
 ._cqupt-duosuo #ds-thread #ds-reset .ds-inline-replybox{
     margin-left: -30px !important;

@@ -45,6 +45,18 @@ var _hmt = _hmt || [];
                     '</header>' +
                     '<div class="_cqupt-content">' +
                         '<div class="_cqupt-duosuo" id="_cqupt-duosuo">' +
+                            '<div class="ds-share flat" data-thread-key="1" data-title="内网外入 - CQUPT" data-images="https://cqupt.congm.in/img/cqupt.png" data-content="一站解决外网访问教务在线等内网所有网页！" data-url="https://cqupt.congm.in">' +
+                                '<div class="ds-share-inline">' +
+                                    '<ul class="ds-share-icons-16">' +
+                                        '<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享:</a></li>' +
+                                        '<li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>' +
+                                        '<li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>' +
+                                        '<li><a class="ds-qq" href="javascript:void(0);" data-service="qq">QQ</a></li>' +
+                                        '<li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">空间</a></li>' +
+                                    '</ul>' +
+                                    '<div class="ds-share-icons-more"></div>' +
+                                '</div>' +
+                            '</div>' +
                             '<span class="_cqupt-loading">正在加载中...</span>' +
                         '</div>' +
                     '</div>' +
@@ -64,7 +76,7 @@ var _hmt = _hmt || [];
                 el.setAttribute('data-url', 'https://cqupt.congm.in');
                 DUOSHUO.EmbedThread(el);
                 var duosuo = document.getElementById("_cqupt-duosuo");
-                duosuo.replaceChild(el, duosuo.firstChild);
+                duosuo.replaceChild(el, duosuo.lastChild);
                 discuss.className = "active";
                 side.className = "active";
             };

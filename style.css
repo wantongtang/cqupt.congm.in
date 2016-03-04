@@ -265,7 +265,7 @@ input[value]{
 }
 #discuss.active{
 	z-index: 100;
-	margin-right: 260px;
+	margin-right: 262px;
 	color: #444;
 }
 #discuss.active .pinglun-text{
@@ -377,7 +377,7 @@ input[value]{
 	float: right;
 	padding: 1em;
 	margin-top: 0.8em;
-	margin-right: 0.8em;
+	margin-right: 0.7em;
 	min-height: 18px;
 	min-width: 18px;
 	opacity: .8;
@@ -400,6 +400,13 @@ input[value]{
 .duosuo .loading{
 	color: #555;
 	font-size: 14px;
+}
+.duosuo #ds-share #ds-reset .ds-share-icons-16{
+	padding: 0 2px;
+}
+.duosuo #ds-share #ds-reset .ds-share-icons-16>li a{
+	font-size: 14px !important;
+	color: #666 !important;
 }
 .duosuo #ds-thread #ds-reset .ds-inline-replybox{
 	margin-left: -30px !important;
@@ -458,7 +465,7 @@ input[value]{
 	}
 	#discuss.active{
 		margin-right: 100%;
-		right: -60px;
+		right: -58px;
 	}
 	#discuss .pinglun-text{
 		right: -1.5em;
