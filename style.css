@@ -397,6 +397,10 @@ input[value]{
 .side-box .content .duosuo{
 	padding: 0 20px 0 25px;
 }
+.duosuo .loading{
+	color: #555;
+	font-size: 14px;
+}
 .duosuo .ds-sync{
 	display: none !important;
 }

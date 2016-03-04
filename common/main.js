@@ -32,23 +32,23 @@ var _hmt = _hmt || [];
     /* 插入dom */
     css.onload = function(){
         var a = '<a href="//cqupt.congm.in" id="_cqupt">' +
-            '内网外入<br>' +
-            '<small>cqupt.congm.in</small>' +
-            '</a>' +
-            '<div id="_cqupt-discuss">' +
-            '<span class="_cqupt-iconfont _cqupt-pinglun">&#xf00f8;</span>' +
-            '<span class="_cqupt-pinglun-text">评论</span>' +
-            '</div>' +
-            '<div id="_cqupt-side-box">' +
-            '<header class="_cqupt-header">' +
-            '<div id="_cqupt-discuss-close"><img src="//cqupt.congm.in/img/close.png"></div>' +
-            '</header>' +
-            '<div class="_cqupt-content">' +
-            '<div class="_cqupt-duosuo">' +
-            '<div class="ds-thread" data-thread-key="1" data-title="内网外入" data-url="https://cqupt.congm.in"></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
+                    '内网外入<br>' +
+                    '<small>cqupt.congm.in</small>' +
+                '</a>' +
+                '<div id="_cqupt-discuss">' +
+                    '<span class="_cqupt-iconfont _cqupt-pinglun">&#xf00f8;</span>' +
+                    '<span class="_cqupt-pinglun-text">评论</span>' +
+                '</div>' +
+                '<div id="_cqupt-side-box">' +
+                    '<header class="_cqupt-header">' +
+                        '<div id="_cqupt-discuss-close"><img src="//cqupt.congm.in/img/close.png"></div>' +
+                    '</header>' +
+                    '<div class="_cqupt-content">' +
+                        '<div class="_cqupt-duosuo" id="_cqupt-duosuo">' +
+                            '<span class="_cqupt-loading">正在加载中...</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
         if(self == top){
             document.body.insertAdjacentHTML("afterbegin", a);
         }
@@ -58,6 +58,13 @@ var _hmt = _hmt || [];
             var side = document.getElementById("_cqupt-side-box");
             var close = document.getElementById("_cqupt-discuss-close");
             discuss.onclick = function(){
+                var el = document.createElement('div');
+                el.setAttribute('data-thread-key', '1');
+                el.setAttribute('data-title', '内网外入');
+                el.setAttribute('data-url', 'https://cqupt.congm.in');
+                DUOSHUO.EmbedThread(el);
+                var duosuo = document.getElementById("_cqupt-duosuo");
+                duosuo.replaceChild(el, duosuo.firstChild);
                 discuss.className = "active";
                 side.className = "active";
             };

@@ -183,6 +183,10 @@
 #_cqupt-side-box ._cqupt-content ._cqupt-duosuo{
     padding: 0 20px 0 25px;
 }
+._cqupt-duosuo ._cqupt-loading{
+    color: #555;
+    font-size: 14px;
+}
 ._cqupt-duosuo .ds-sync{
     display: none !important;
 }

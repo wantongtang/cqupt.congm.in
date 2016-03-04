@@ -224,6 +224,12 @@ $(function() {
     }
     //discuss
     $("#discuss").click(function(){
+        var el = document.createElement('div');
+        el.setAttribute('data-thread-key', '1');
+        el.setAttribute('data-title', '内网外入');
+        el.setAttribute('data-url', 'https://cqupt.congm.in');
+        DUOSHUO.EmbedThread(el);
+        $("#duosuo").html(el);
         $(this).addClass("active");
         $(".side-box").addClass("active");
     });
