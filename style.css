@@ -399,11 +399,11 @@ input[value]{
 	overflow-y: auto;
 }
 .side-box .content .duosuo{
-	padding: 0 20px 0 25px;
+	padding: 0 20px 5px 25px;
 }
 .duosuo .loading{
-	color: #555;
-	font-size: 14px;
+	color: #666;
+	font-size: 12px;
 }
 .duosuo #ds-share #ds-reset .ds-share-icons-16{
 	padding: 0 2px;

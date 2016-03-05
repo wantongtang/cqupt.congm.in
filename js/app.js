@@ -222,7 +222,7 @@ $(function() {
         $(".about#toblues").fadeToggle();
         setTimeout(show_about, 10000);
     }
-    //discuss
+    //side-box
     $("#discuss").click(function(){
         var el = document.createElement('div');
         el.setAttribute('data-thread-key', '1');

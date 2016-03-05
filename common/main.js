@@ -64,27 +64,25 @@ var _hmt = _hmt || [];
         if(self == top){
             document.body.insertAdjacentHTML("afterbegin", a);
         }
-        /* discuss */
-        (function(){
-            var discuss = document.getElementById("_cqupt-discuss");
-            var side = document.getElementById("_cqupt-side-box");
-            var close = document.getElementById("_cqupt-discuss-close");
-            discuss.onclick = function(){
-                var el = document.createElement('div');
-                el.setAttribute('data-thread-key', '1');
-                el.setAttribute('data-title', '内网外入');
-                el.setAttribute('data-url', 'https://cqupt.congm.in');
-                DUOSHUO.EmbedThread(el);
-                var duosuo = document.getElementById("_cqupt-duosuo");
-                duosuo.replaceChild(el, duosuo.lastChild);
-                discuss.className = "active";
-                side.className = "active";
-            };
-            close.onclick = function(){
-                discuss.className = "";
-                side.className = "";
-            };
-        })();
+        /* side-box */
+        var discuss = document.getElementById("_cqupt-discuss");
+        var side = document.getElementById("_cqupt-side-box");
+        var close = document.getElementById("_cqupt-discuss-close");
+        discuss.onclick = function(){
+            var el = document.createElement('div');
+            el.setAttribute('data-thread-key', '1');
+            el.setAttribute('data-title', '内网外入');
+            el.setAttribute('data-url', 'https://cqupt.congm.in');
+            DUOSHUO.EmbedThread(el);
+            var duosuo = document.getElementById("_cqupt-duosuo");
+            duosuo.replaceChild(el, duosuo.lastChild);
+            discuss.className = "active";
+            side.className = "active";
+        };
+        close.onclick = function(){
+            discuss.className = "";
+            side.className = "";
+        };
     };
 })();
 
